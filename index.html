@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./public/css/romanStyle.css" />
+  <title>Document</title>
+</head>
+  <body>
+    <div class="container">
+        <!-- Enter the user input value here -->
+        <div class="numbers">
+            <h1>Number</h1>
+            <input type="number" id="numberInput">
+        </div>
+        <!-- Calling the conversion function -->
+        <div class="button">
+          <button onclick="convertToRoman()" id="convert">Convert</button>
+        </div>
+        <div class="romans">
+            <h1>Romans</h1>
+            <input type="text" id="romanOutput">
+        </div>
+    </div>
+    <script>
+      let eventSource;
+      function convertToRoman() {
+        // when "Start" button pressed
+        if (!window.EventSource) {
+          // IE or an old browser
+          alert("The browser doesn't support EventSource.");
+          return;
+        }
+        // take the input from user
+        numberInput = document.getElementById('numberInput').value;
+      // check if the user input value is below 1
+        if(numberInput < 0 || numberInput == 0){
+            alert(" Enter the value must be greater than 0");
+            document.getElementById('numberInput').value = '';
+            return false;
+        }
+        eventSource = new EventSource("convert_to_roman?num=" + numberInput);
+        console.log(eventSource)
+        eventSource.onopen = function (e) {
+          log("Event: open connection");
+        };
+
+        eventSource.onerror = function (e) {
+          stop();
+          log("Event: error");
+          if (this.readyState == EventSource.CONNECTING) {
+            log(`Reconnecting (readyState=${this.readyState})...`);
+          } else {
+            log("Error has occured.");
+          }
+        };
+        // Add the roman output value to event data
+        eventSource.onmessage = function (e) {
+          log("Event: message, data: " + e.data);
+          romanOutput.value = e.data;
+        };
+      }
+
+      function stop() {
+        // when "Stop" button pressed
+        eventSource.close();
+        log("eventSource.close()");
+      }
+
+      function log(msg) {
+        console.log(msg);
+        document.documentElement.scrollTop = 99999999;
+      }
+    </script>
+  </body>
+</html>

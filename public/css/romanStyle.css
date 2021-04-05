@@ -1,0 +1,108 @@
+*{
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+html{
+    background: #6441A5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2a0845, #6441A5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2a0845, #6441A5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    
+
+}
+.container{
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+h1{
+    color: white;
+}
+.numbers{
+    padding: 30px;
+    margin: 40px;
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+ .numbers #numberInput{
+    height: 50px;
+    font-size: 24px;
+    padding: 5px;
+    text-align: center;
+    
+}
+.romans{
+    padding: 30px;
+    margin: 40px;
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.romans #romanOutput{
+    height: 50px;
+    font-size: 24px;
+    padding: 5px;
+    text-align: center;
+}
+.button{
+    text-decoration: none;
+    margin: 40px;
+}
+.button #convert{
+    margin-top: 99px;
+    width: 250px;
+    height: 50px;
+    font-size: 25px;
+    font-weight: bolder;
+    cursor: pointer;
+    color: red;
+}
+
+@media screen and (max-width : 1109px) {
+    .container{
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin:auto;
+    }
+    .numbers{
+        padding: 30px;
+        margin: auto;
+        width: 530px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    .romans{
+        padding: 30px;
+        margin: auto;
+        width: 530px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    .button{
+        text-decoration: none;
+        width: 530px;
+        margin:auto;
+       text-align: center;
+       margin-bottom: 35px;
+
+    }
+  
+     
+}
